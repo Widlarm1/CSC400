@@ -33,7 +33,7 @@ class Login extends CI_Controller {
                 else{
                 $user_data = array('email'=>$email);
                 $this->session->set_userdata($user_data);
-                redirect('http://localhost:8888/CSC400/index.php/Home/landing');
+                redirect('http://localhost:/CSC400/index.php/Home/landing');
                 }
 
             }
@@ -65,7 +65,7 @@ class Login extends CI_Controller {
                 else{
                     $update_auth = $this->DB_Model->update_auth($email, $auth_token);
                     if($update_auth == TRUE){
-                    redirect('http://localhost:8888/CSC400/index.php/Login/validate_auth/'.$email.'');
+                    redirect('http://localhost:/CSC400/index.php/Login/validate_auth/'.$email.'');
                     }
                     else{
                         $data['update_failed']='<div class="alert alert-danger">Unable to update auth table</div>';
@@ -123,7 +123,7 @@ class Login extends CI_Controller {
             $status = 1;
             $update_pwd = $this->DB_Model->update_pass($email, $pwd, $status);
             if($update_pwd == TRUE){
-                redirect('http://localhost:8888/CSC400/index.php/Login/signin');
+                redirect('http://localhost:/CSC400/index.php/Login/signin');
             }
             else{
                 $data['update_failed']='<div class="alert alert-danger">We were unable to update your password</div>';
@@ -137,10 +137,10 @@ class Login extends CI_Controller {
 			public function signout(){
 				$unset = $this->session->unset_userdata('email');
 				if($unset){
-					redirect('http://localhost:8888/ecommerce/index.php/Login/signin');
+					redirect('http://localhost:/ecommerce/index.php/Login/signin');
 				}
 				else{
-					redirect('http://localhost:8888/CSC400/index.php/Home/landing');
+					redirect('http://localhost:/CSC400/index.php/Home/landing');
 				}
 			}
       public function validate_auth($email){
@@ -155,7 +155,7 @@ class Login extends CI_Controller {
               $token = $this->input->post('token');
               $verify_auth = $this->DB_Model->validate_auth($email, $token);
               if($verify_auth == TRUE){
-                  redirect('http://localhost:8888/CSC400/index.php/Login/create_pass/'.$email.'');
+                  redirect('http://localhost:/CSC400/index.php/Login/create_pass/'.$email.'');
               }
               else{
                   $data['err']='<div class="alert alert-danger">Something went wrong!</div>';
