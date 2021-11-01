@@ -7,6 +7,7 @@ class Login extends CI_Controller {
 	{   $this->load->library('form_validation');
         $this->load->helper('url');
         $this->load->model('DB_Model');
+        $this->load->library('session');
         $this->form_validation->set_rules('email', 'email', 'trim|required');
         // regex for password validation required|regex_match[/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/]
         $this->form_validation->set_rules('pwd', 'Password', 'trim|required');
@@ -24,7 +25,17 @@ class Login extends CI_Controller {
                 $this->load->view('login', $data);
             }
             else{
+                $verify = $this->DB_Model->verify_login($email, $pwd);
+                if($verify == FALSE){
+                    $data['wrong_pwd']='<div class="alert alert-danger fw-normal">You entered the wrong password!</div>';
+                    $this->load->view('signin', $data);
+                }
+                else{
+                $user_data = array('email'=>$email);
+                $this->session->set_userdata($user_data);
                 redirect('http://localhost/CSC400/index.php/Home/landing');
+                }
+                
             }
         }
 	}
