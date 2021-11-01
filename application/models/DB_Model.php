@@ -15,12 +15,12 @@ class DB_Model extends CI_Model {
 		else{
 		  return FALSE;
 		}
-	
+
 	  }
-	  
+
 	  public function update_pass($email, $pwd, $status){
 		  $this->db->set('pwd', $pwd);
-		  $this->db->set('status', $status);
+		  $this->db->set('auth_status', $status);
 		  $this->db->where('email', $email);
 		  $update = $this->db->update('Staff');
 		  if($update){
@@ -42,6 +42,29 @@ class DB_Model extends CI_Model {
 			  return false;
 		  }
 	  }
+
+		public function get_auth($email, $code){
+			$this->db->select('*');
+			$this->db->from('Staff');
+			$this->db->where('email', $email);
+			$results = $this->db->get()->result_array();
+			foreach($results as $row){
+			$verification = $row['auth_token'];
+			}
+			if($code == $verification){
+				$status = 1;
+				$this->db->set('auth_status', $status);
+				$this->db->where('email', $email);
+				$update_status = $this->db->update('Staff');
+				if($update_status){
+					return TRUE;
+				}
+
+			}
+			else{
+				return FALSE;
+			}
+		}
 
 	public function verify_login($email, $pwd){
 		$this->db->select('*');
@@ -78,5 +101,5 @@ class DB_Model extends CI_Model {
 	public function create_account($user_data){
 		return $this->db->insert('staff', $user_data);
 	}
-	
+
 }

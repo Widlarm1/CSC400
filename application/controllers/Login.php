@@ -17,8 +17,8 @@ class Login extends CI_Controller {
         else{
             $email = $this->input->post('email');
             $pwd = $this->input->post('pwd');
-            
-            // check if the user exists 
+
+            // check if the user exists
             $if_exists = $this->DB_Model->check_user($email);
             if($if_exists == FALSE){
                 $data['no_user']='<div class="alert alert-warning fw-normal leard">There is no account associated with that username</div>';
@@ -28,14 +28,14 @@ class Login extends CI_Controller {
                 $verify = $this->DB_Model->verify_login($email, $pwd);
                 if($verify == FALSE){
                     $data['wrong_pwd']='<div class="alert alert-danger fw-normal">You entered the wrong password!</div>';
-                    $this->load->view('signin', $data);
+                    $this->load->view('login', $data);
                 }
                 else{
                 $user_data = array('email'=>$email);
                 $this->session->set_userdata($user_data);
-                redirect('http://localhost/CSC400/index.php/Home/landing');
+                redirect('http://localhost:8888/CSC400/index.php/Home/landing');
                 }
-                
+
             }
         }
 	}
@@ -49,7 +49,7 @@ class Login extends CI_Controller {
             $this->load->view('forgot_pwd');
         }
         else{
-            // Check to see if this user has an account 
+            // Check to see if this user has an account
             $email = $this->input->post('email');
             $check_user = $this->DB_Model->check_user($email);
             if($check_user == FALSE){
@@ -65,7 +65,7 @@ class Login extends CI_Controller {
                 else{
                     $update_auth = $this->DB_Model->update_auth($email, $auth_token);
                     if($update_auth == TRUE){
-                    redirect('http://localhost/CSC400/index.php/Login/validate_auth/'.$email.'');
+                    redirect('http://localhost:8888/CSC400/index.php/Login/validate_auth/'.$email.'');
                     }
                     else{
                         $data['update_failed']='<div class="alert alert-danger">Unable to update auth table</div>';
@@ -96,14 +96,14 @@ class Login extends CI_Controller {
         $this->email->to($email, 'Do not reply');
         $this->email->subject('Password reset request');
         $this->email->message($body);
-      
+
         if(!$this->email->send()){
         return FALSE;
         return $this->email->print_debugger();
-      
+
         }
         else{
-      
+
           return TRUE;
         }
       }
@@ -123,16 +123,26 @@ class Login extends CI_Controller {
             $status = 1;
             $update_pwd = $this->DB_Model->update_pass($email, $pwd, $status);
             if($update_pwd == TRUE){
-                redirect('http://localhost/CSC400/index.php/Login/signin');
-            } 
+                redirect('http://localhost:8888/CSC400/index.php/Login/signin');
+            }
             else{
                 $data['update_failed']='<div class="alert alert-danger">We were unable to update your password</div>';
                 $this->load->view('create_pass', $data);
             }
         }
-          
+
 
       }
+
+			public function signout(){
+				$unset = $this->session->unset_userdata('email');
+				if($unset){
+					redirect('http://localhost:8888/ecommerce/index.php/Login/signin');
+				}
+				else{
+					redirect('http://localhost:8888/CSC400/index.php/Home/landing');
+				}
+			}
       public function validate_auth($email){
           $this->load->model('DB_Model');
           $this->load->library('form_validation');
@@ -145,14 +155,14 @@ class Login extends CI_Controller {
               $token = $this->input->post('token');
               $verify_auth = $this->DB_Model->validate_auth($email, $token);
               if($verify_auth == TRUE){
-                  redirect('http://localhost/CSC400/index.php/Login/create_pass/'.$email.'');
+                  redirect('http://localhost:8888/CSC400/index.php/Login/create_pass/'.$email.'');
               }
               else{
                   $data['err']='<div class="alert alert-danger">Something went wrong!</div>';
                   $this->load->view('validate_auth', $data);
               }
           }
-          
+
       }
-    
+
 }

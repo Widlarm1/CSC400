@@ -136,13 +136,13 @@ body {
           <h3 class="masthead-brand">Faculty KnowledgeBase</h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="../Login/signin">Logout</a>
+            <a class="nav-link" href="../Login/signout">Logout</a>
           </nav>
         </div>
       </header>
 
       <main role="main" class="inner cover">
-        <h1 class="text-center text-white">Welcome back, <?php echo $_SESSION['email'];?></h1>        
+        <h1 class="text-center text-white">Welcome back, <?php echo $_SESSION['email'];?></h1>
         <h2 class="cover-heading">Project Overview By Dr. Zheni Wang</h1>
             <iframe src="http://www.youtube.com/embed/iV6ZOJy5jaw"
             width="560" height="315" frameborder="0" allowfullscreen></iframe>

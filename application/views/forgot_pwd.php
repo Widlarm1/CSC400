@@ -29,7 +29,7 @@ h2 {
   font-weight: 600;
   text-transform: uppercase;
   display:inline-block;
-  margin: 40px 8px 10px 8px; 
+  margin: 40px 8px 10px 8px;
   color: #cccccc;
 }
 
@@ -40,7 +40,7 @@ h2 {
 .wrapper {
   display: flex;
   align-items: center;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   min-height: 100%;
@@ -292,7 +292,7 @@ input[type=password]:placeholder {
 
 *:focus {
     outline: none;
-} 
+}
 
 #icon {
   width:60%;
@@ -309,7 +309,7 @@ input[type=password]:placeholder {
     <!-- Icon -->
     <div class="fadeIn first">
       <h2 class="text-secondary text-center m-5" style="font-weight: 900;">Reset your Password</h2>
-      <?php 
+      <?php
         if(isset($no_user)){
             echo $no_user;
         }
@@ -322,12 +322,12 @@ input[type=password]:placeholder {
       ?>
     </div>
 
-    <!-- Login Form -->
+    <!-- Reset password Form -->
     <form method="POST">
         <label class="fw-bold">Enter the email you used to create your account</label>
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="Enter your email">
       <small class="text-danger fw-bold"><?php echo form_error('email');?></small>
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="submit" class="fadeIn fourth" value="Send verification code">
     </form>
 
 </div>

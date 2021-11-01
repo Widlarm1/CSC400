@@ -8,11 +8,10 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  height: 100vh;
-  background: #0F2027;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #355C7D;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
 }
 
@@ -308,32 +307,20 @@ input[type=password]:placeholder {
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <h2 class="text-secondary text-center m-5" style="font-weight: 900;">Login to your account</h2>
+      <h2 class="text-secondary text-center m-5" style="font-weight: 900;">Verify your email</h2>
       <?php
-        if(isset($no_user)){
-            echo $no_user;
-        }
-        else if(isset($wrong_pwd)){
-          echo $wrong_pwd;
+        if(isset($wrong_code)){
+            echo $wrong_code;
         }
       ?>
     </div>
 
     <!-- Login Form -->
     <form method="POST">
-      <input type="text" id="login" class="fadeIn second" name="email" placeholder="Enter your email">
-      <small class="text-danger fw-bold"><?php echo form_error('username');?></small>
-      <input type="password" id="password" class="fadeIn third" name="pwd" placeholder="Enter your password">
-      <small class="text-danger fw-bold"><?php echo form_error('pwd');?></small>
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="text" id="login" class="fadeIn second" name="code" placeholder="Enter the code">
+      <small class="text-danger fw-bold"><?php echo form_error('code');?></small>
+      <input type="submit" class="fadeIn fourth" value="Verify">
     </form>
-    <div id="formFooter">
-    <p class="text-secondary font-weight-bold">Don't have an account? <a href="../Signup/create_acct" class="underlineHover">Create one now!</p>
-    </div>
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="forgot_pass">Forgot Password?</a>
-    </div>
 
   </div>
 </div>
