@@ -44,9 +44,9 @@
           </div>
 
           <div class="form-outline mb-3">
-            <input type="text" name="username" class="form-control form-control-lg"
-              placeholder="Create your username" value="<?php echo set_value('username');?>"/>
-              <small class="text-danger"><?php echo form_error('username');?></small>
+            <input type="text" name="email" class="form-control form-control-lg"
+              placeholder="Enter your email" value="<?php echo set_value('email');?>"/>
+              <small class="text-danger"><?php echo form_error('email');?></small>
 
           </div>
 

@@ -4,10 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class DB_Model extends CI_Model {
 
 
-	public function check_user($username){
+	public function check_user($email){
 		$this->db->select('*');
-		$this->db->from('staff');
-		$this->db->where('username', $username);
+		$this->db->from('Staff');
+		$this->db->where('email', $email);
 		$query = $this->db->get();
 		if($query->num_rows() > 0){
 		  return TRUE;
@@ -17,16 +17,57 @@ class DB_Model extends CI_Model {
 		}
 	
 	  }
+	  
+	  public function update_pass($email, $pwd, $status){
+		  $this->db->set('pwd', $pwd);
+		  $this->db->set('status', $status);
+		  $this->db->where('email', $email);
+		  $update = $this->db->update('Staff');
+		  if($update){
+			  return TRUE;
+		  }
+		  else{
+			  return FALSE;
+		  }
+	  }
 
-	public function verify_login($username, $pwd){
+	  public function update_auth($email, $auth_token){
+		  $this->db->set('auth_token', $auth_token);
+		  $this->db->where('email', $email);
+		  $update_auth = $this->db->update('Staff');
+		  if($update_auth){
+			  return true;
+		  }
+		  else{
+			  return false;
+		  }
+	  }
+
+	public function verify_login($email, $pwd){
 		$this->db->select('*');
-		$this->db->from('staff');
-		$this->db->where('username', $username);
+		$this->db->from('Staff');
+		$this->db->where('email', $email);
 		$results = $this->db->get()->result_array();
 		foreach($results as $row){
 			$pass = $row['pwd'];
 		}
 		if(!password_verify($pwd, $pass)){
+			return FALSE;
+		}
+		else{
+			return TRUE;
+		}
+	}
+
+	public function validate_auth($email, $token){
+		$this->db->select('*');
+		$this->db->from('Staff');
+		$this->db->where('email', $email);
+		$results = $this->db->get()->result_array();
+		foreach($results as $row){
+			$correct_token = $row['auth_token'];
+		}
+		if($token!==$correct_token){
 			return FALSE;
 		}
 		else{

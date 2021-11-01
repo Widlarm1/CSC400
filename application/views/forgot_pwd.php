@@ -308,31 +308,28 @@ input[type=password]:placeholder {
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <h2 class="text-secondary text-center m-5" style="font-weight: 900;">Login to your account</h2>
+      <h2 class="text-secondary text-center m-5" style="font-weight: 900;">Reset your Password</h2>
       <?php 
         if(isset($no_user)){
             echo $no_user;
+        }
+        else if(isset($email_failed)){
+            echo $email_failed;
+        }
+        else if(isset($update_failed)){
+            echo $update_failed;
         }
       ?>
     </div>
 
     <!-- Login Form -->
     <form method="POST">
+        <label class="fw-bold">Enter the email you used to create your account</label>
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="Enter your email">
-      <small class="text-danger fw-bold"><?php echo form_error('username');?></small>
-      <input type="password" id="password" class="fadeIn third" name="pwd" placeholder="Enter your password">
-      <small class="text-danger fw-bold"><?php echo form_error('pwd');?></small>
+      <small class="text-danger fw-bold"><?php echo form_error('email');?></small>
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
-    <div id="formFooter">
-    <p class="text-secondary font-weight-bold">Don't have an account? <a href="../Signup/create_acct" class="underlineHover">Create one now!</p>
-    </div>
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="forgot_pass">Forgot Password?</a>
-    </div>
 
-  </div>
 </div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
