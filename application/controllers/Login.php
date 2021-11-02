@@ -21,7 +21,7 @@ class Login extends CI_Controller {
             // check if the user exists
             $if_exists = $this->DB_Model->check_user($email);
             if($if_exists == FALSE){
-                $data['no_user']='<div class="alert alert-warning fw-normal leard">There is no account associated with that username</div>';
+                $data['no_user']='<div class="alert alert-warning fw-normal leard">There is no account associated with that email</div>';
                 $this->load->view('login', $data);
             }
             else{
@@ -92,7 +92,7 @@ class Login extends CI_Controller {
         $config['mailtype']='html';
         $config['charset']='iso-8859-1';
         $this->email->initialize($config);
-        $this->email->from('knowledgebasescsu@gmail.com', 'Password Reset');
+        $this->email->from('nhicvoting@gmail.com', 'Password Reset');
         $this->email->to($email, 'Do not reply');
         $this->email->subject('Password reset request');
         $this->email->message($body);
@@ -113,12 +113,12 @@ class Login extends CI_Controller {
           $this->load->model('DB_Model');
           $this->load->library('form_validation');
           $this->form_validation->set_rules('pwd', 'Password', 'required|trim|regex_match[/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/]');
-        $this->form_validation->set_rules('confirm_pwd', 'Retype Password', 'required|trim|matches[pwd]');
+        	$this->form_validation->set_rules('confirm_pwd', 'Retype Password', 'required|trim|matches[pwd]');
         if($this->form_validation->run()==FALSE){
             $this->load->view('create_pass');
         }
         else{
-            $email = $this->input->get('email');
+            $data['email']=$email;
             $pwd = password_hash($this->input->post('pwd'), PASSWORD_DEFAULT);
             $status = 1;
             $update_pwd = $this->DB_Model->update_pass($email, $pwd, $status);

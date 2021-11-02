@@ -44,7 +44,10 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #333;
+  background: #FC466B;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3F5EFB, #FC466B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 body {
@@ -142,10 +145,10 @@ body {
       </header>
 
       <main role="main" class="inner cover">
-        <h1 class="text-center text-white">Welcome back, <?php echo $_SESSION['email'];?></h1>
-        <h2 class="cover-heading">Project Overview By Dr. Zheni Wang</h1>
+        <h3 class="text-center fw-bold text-light">Welcome back, <?php echo $_SESSION['email'];?></h3>
+        <p class="cover-heading">Project Overview By Dr. Zheni Wang</p>
             <iframe src="http://www.youtube.com/embed/iV6ZOJy5jaw"
-            width="560" height="315" frameborder="0" allowfullscreen></iframe>
+            width="560" height="315" frameborder="0" allowfullscreen class="shadow-lg p-3 mb-5 bg-white rounded"></iframe>
       </main>
 
       <footer class="mastfoot mt-auto">

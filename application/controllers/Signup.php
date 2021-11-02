@@ -17,10 +17,10 @@ class Signup extends CI_Controller {
         }
         else{
             // check if user exists
-            $username = $this->input->post('username');
-            $if_exists = $this->DB_Model->check_user($username);
+            $email = $this->input->post('email');
+            $if_exists = $this->DB_Model->check_user($email);
             if($if_exists == TRUE){
-                $data['already_exists']='<div class="alert alert-warning fw-bold">Looks like you already have an account with us, go ahead and login here <br> <a href="../Login/signin" class="text-primary">Login here</a></div>';
+                $data['already_exists']='<div class="alert alert-warning fw-bold">Looks like you already have an account with us, go ahead and login <br> <a href="../Login/signin" class="text-primary">Login here</a></div>';
                 $this->load->view('signup', $data);
             }
             else{
