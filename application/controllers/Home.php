@@ -13,4 +13,10 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('home');
 	}
+
+	public function records(){
+		$this->load->model('DB_Model');
+		$data['records']=$this->DB_Model->get_records();
+		$this->load->view('records', $data);
+	}
 }

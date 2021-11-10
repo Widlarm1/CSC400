@@ -17,6 +17,11 @@ class DB_Model extends CI_Model {
 		}
 
 	  }
+	  
+	  public function get_records(){
+		$data = $this->db->query('SELECT * FROM dummydata');
+		return array('count'=>$data->num_rows(), 'data'=>$data->result(),'first'=>$data->row());
+	  }
 
 	  public function update_pass($email, $pwd, $status){
 		  $this->db->set('pwd', $pwd);
