@@ -10,8 +10,9 @@ class Home extends CI_Controller {
 		}
 	}
 	public function landing()
-	{
-		$this->load->view('home');
+	{$this->load->model('DB_Model');
+		$data['records']=$this->DB_Model->get_records();
+		$this->load->view('home', $data);
 	}
 
 	public function records(){
