@@ -23,6 +23,15 @@ class DB_Model extends CI_Model {
 		return array('count'=>$data->num_rows(), 'data'=>$data->result(),'first'=>$data->row());
 	  }
 
+	  public function view_details($id){
+		$data = $this->db->query('SELECT * FROM dummydata WHERE id='.$id.'');
+		return array('count'=>$data->num_rows(), 'data'=>$data->result(),'first'=>$data->row()); 
+	  }
+
+	public function get_results($search){
+		$data = $this->db->query("SELECT * FROM dummydata WHERE school LIKE  '%$search%'");
+		return array('count'=>$data->num_rows(), 'data'=>$data->result(), 'first'=>$data->row());
+	}
 	  public function update_pass($email, $pwd, $status){
 		  $this->db->set('pwd', $pwd);
 		  $this->db->set('auth_status', $status);
