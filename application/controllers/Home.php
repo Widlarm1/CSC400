@@ -19,19 +19,39 @@ class Home extends CI_Controller {
 			$this->load->view('home', $data);
 		}
 		else{
-			/*$search = $this->input->post('search');
-			$data['results']= $this->DB_Model->get_results($search);
-			$this->load->view('search_results', $data); */
 			$search = $this->input->post('search');
 			$data['results']= $this->DB_Model->get_results($search);
 			$this->load->view('search_results', $data);
+			
 		} 
 		
 	}
-	public function view_details($id){
+
+	public function landingTwo(){
+		$this->load->model('DB_Model');
+		$data['records']=$this->DB_Model->get_records();
+		$data['total_faculty']=$this->DB_Model->get_num_faculty();
+		$this->load->library('form_validation');
+		$this->load->helper('url');
+		$this->load->view('home_two', $data);
+	}
+
+	public function tables(){
+		$this->load->model('DB_Model');
+		$data['joinedTables']=$this->DB_Model->jointables();
+		$this->load->helper('url');
+		$this->load->view('tables', $data);
+	}
+
+	public function table(){
+		$this->load->model('DB_Model');
+		$data['records']=$this->DB_Model->get_records();
+		$this->load->view('tables', $data);
+	}
+	public function view_details($emailid){
 		$this->load->model('DB_Model');
 		$this->load->helper('url');
-		$data['data'] = $this->DB_Model->view_details($id);
+		$data['data'] = $this->DB_Model->view_details($emailid);
 		$this->load->view('view_details', $data);
 	}
 	public function records(){

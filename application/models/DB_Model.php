@@ -19,17 +19,35 @@ class DB_Model extends CI_Model {
 	  }
 	  
 	  public function get_records(){
-		$data = $this->db->query('SELECT * FROM dummydata');
+		$data = $this->db->query('SELECT * FROM faculty');
 		return array('count'=>$data->num_rows(), 'data'=>$data->result(),'first'=>$data->row());
 	  }
-
-	  public function view_details($id){
-		$data = $this->db->query('SELECT * FROM dummydata WHERE id='.$id.'');
-		return array('count'=>$data->num_rows(), 'data'=>$data->result(),'first'=>$data->row()); 
+	  public function get_num_faculty(){
+		$data = $this->db->query('SELECT * FROM faculty');
+ 		return $data->num_rows();
 	  }
 
+	  public function jointables(){
+		  /*$this->db->select('*');
+		  $this->db->from('faculty');
+		  $this->db->join('education', 'EducationID = faculty.FacultyId', 'inner');
+		  $query = $this->db->get()->result();
+		  return $query; */
+		$data = $this->db->query('SELECT * FROM faculty INNER JOIN education ON faculty.FacultyId = education.EducationID');
+		return array('count'=>$data->num_rows(), 'data'=>$data->result(),'first'=>$data->row());
+
+	  }
+
+public function view_details($emailid){
+
+	$data=$this->db->query ("SELECT * FROM faculty WHERE FacultyEmailAddress='{$emailid}'");
+	
+	return array('count'=>$data->num_rows(), 'data'=>$data->result(),'first'=>$data->row());
+	
+	}
+
 	public function get_results($search){
-		$data = $this->db->query("SELECT * FROM dummydata WHERE school LIKE  '%$search%'");
+		$data = $this->db->query("SELECT * FROM faculty WHERE FacultyFirstName LIKE  '%$search%'");
 		return array('count'=>$data->num_rows(), 'data'=>$data->result(), 'first'=>$data->row());
 	}
 	  public function update_pass($email, $pwd, $status){

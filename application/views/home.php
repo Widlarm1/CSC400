@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>SCSU Faculty KnowledgeBase Home</title>
-  <!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
-    <link href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
--->
+  
     <style>
     /*
  * Globals
@@ -150,8 +147,8 @@ body {
             <iframe src="http://www.youtube.com/embed/iV6ZOJy5jaw"
             width="560" height="315" frameborder="0" allowfullscreen class="shadow-lg p-3 mb-5 bg-white rounded"></iframe>
       </main>
-      <div class="container-fluid shadow-lg p-3 mb-5 bg-dark rounded">
-      <table id="data" class="table table-striped table-bordered">
+      <div class="container-fluid shadow-lg p-3 mb-5 bg-dark rounded"style="width:1000px;">
+      <table id="data" class="table table-striped table-bordered" style="width:1000px;">
       <form method="POST">
       <div class="input-group mb-3">
   <div class="form-outline">
@@ -164,18 +161,24 @@ body {
 </div>
       </div>
       <thead class="bg-primary text-white fw-bold">
-      <th>School</th>
-      <th>Class</th>
-      <th>Date Enrolled</th>
-      <th>View Details</th>
+      <th>Faculty Email</th>
+      <th>First Name</th>
+      <th>Middle Name</th>
+      <th>Last name</th>
+      <th>Faculty Website</th>
+      <th>Gender</th>
+      <th>Details</th>
     </thead>
     <?php 
         foreach($records['data'] as $row){
-            echo '<tbody class="bg-dark text-white">
-                <td>'.$row->school.'</td>
-                <td>'.$row->class.'</td>
-                <td>'.$row->enrolled.'</td>
-                <td><a href="view_details/'.$row->id.'" class="btn btn-primary">View Details</a></td>
+            echo '<tbody class="bg-light text-dark">
+                <td>'.$row->FacultyEmailAddress.'</td>
+                <td>'.$row->FacultyFirstName.'</td>
+                <td>'.$row->FacultyMiddleName.'</td>
+                <td>'.$row->FacultyLastName.'</td>
+                <td> <a class="link-primary" href="'.$row->FacultyWebsite.'">'.$row->FacultyWebsite.'</a></td>
+                <td>'.$row->FacultyGender.'</td>
+                <td><a href="view_details/'.$row->FacultyEmailAddress.'" class="btn btn-primary">View Details</a></td>
             </tbody>
             ';
         }
@@ -187,42 +190,20 @@ body {
         </div>
       </footer>
     </div>
-    <!--    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.bootstrap4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.colVis.min.js"></script> -->
-        <script>
-$(function (){
-  $('#data').DataTable({
-    scrollY: 400,
-    processing: true,
-    paging:true,
-    searching: true,
-    responsive: true,
-    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-     color: 'white',
-     stateSave: true,
-     buttons: {
-        buttons: [ 'copy', 'csv', 'excel' ]
-    }     /*
-     s stores state information such as pagination position, 
-     display length, filtering and sorting. 
-     When stateSave is active and the end user reloads the 
-     page the table's state will be altered 
-     to match what they had previously set up
-      */
-  });
-});
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
+   
+   <script>
+
+$(document).ready( function () {
+   $('#data').DataTable();} )
+
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
       </body>

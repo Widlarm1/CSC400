@@ -33,7 +33,7 @@ class Login extends CI_Controller {
                 else{
                 $user_data = array('email'=>$email);
                 $this->session->set_userdata($user_data);
-                redirect('http://localhost:/CSC400/index.php/Home/landing');
+                redirect('http://localhost:/CSC400/index.php/Home/landingTwo');
                 }
 
             }
@@ -82,9 +82,9 @@ class Login extends CI_Controller {
         $config['useragent']='CodeIgniter';
         $config['protocol']='smtp';
         $config['smtp_host']='smtp.gmail.com';
-        $config['smtp_user']='nhicvoting@gmail.com';
-        $config['smtp_pass']='ClubPenguin99!';
-        $config['smtp_port']='465';
+        $config['smtp_user']='steminformationsystem@gmail.com';
+        $config['smtp_pass']='Sw!mm3r#17';
+        $config['smtp_port']='465'; // either 465 or 587
         $config['newline']="\r\n";
         $config['smtp_timeout']='5';
         $config['smtp_crypto']='ssl';
@@ -140,7 +140,7 @@ class Login extends CI_Controller {
 					redirect('http://localhost:/ecommerce/index.php/Login/signin');
 				}
 				else{
-					redirect('http://localhost:/CSC400/index.php/Home/landing');
+					redirect('http://localhost:/CSC400/index.php/Home/landingTwo');
 				}
 			}
       public function validate_auth($email){

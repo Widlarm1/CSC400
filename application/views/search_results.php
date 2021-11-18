@@ -14,13 +14,19 @@
 </div>
       </div>
 </form>
+<a href="landing" class='link-primary'>Return to Hompage</a>
+
+
 <div class="responsive">
 <table class="table table-hover shadow-lg p-3 mb-5 bg-body rounded" style="width: 1000px;">
 <thead class="bg-primary text-white">
-<th>School</th>
-<th>Class</th>
-<th>Enrolled</th>
-<th>Detailed Results
+<th>Faculty Email</th>
+<th>First Name</th>
+<th>Middle Name</th>
+<th>Last name</th>
+<th>Faculty Website</th>
+<th>Gender</th>
+<th>Detailed Results</th>
 </thead>
 <?php 
 if(empty($results['data'])){
@@ -33,10 +39,13 @@ foreach($results['data'] as $row){
  echo '
 <tbody class="bg-white text-dark fw-bold">
 <tr>
-<td>'.$row->school.'</td>
-<td>'.$row->class.'</td>
-<td>'.$row->enrolled.'</td>
-<td><a href="view_details/'.$row->id.' " class="btn btn-primary">View detailed data</a></td>
+<td>'.$row->FacultyEmailAddress.'</td>
+<td>'.$row->FacultyFirstName.'</td>
+<td>'.$row->FacultyMiddleName.'</td>
+<td>'.$row->FacultyLastName.'</td>
+<td>'.$row->FacultyWebsite.'</td>
+<td>'.$row->FacultyGender.'</td>
+<td><a href="view_details/'.$row->FacultyEmailAddress.'" class="btn btn-primary">View Details</a></td>
 </tr>
 </tbody>
 ';
