@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>STEM Scholar Dempgraphic and Impact Information System</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url();?>dash/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,9 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url();?>dash/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+   <!-- <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"> -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+   <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
     <link ref="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
 </head>
 
@@ -44,7 +46,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="landingTwo">
+                <a class="nav-link" href="tables">
                     <i class="fas fa-fw fa-home fa-2x"></i>
                     <span>Home</span></a>
             </li>
@@ -121,7 +123,7 @@
                     <div class="row">
 
                         <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7" style="width: 1500px;">
+                        <div class="col-xl-8 col-lg-7" style="width: 1550px;">
                             <div class="card shadow mb-4" style="width: 1000px;">
                                 <!-- Card Header - Dropdown -->
                                 <gdiv
@@ -139,7 +141,11 @@
                                         <th>Last Name</th>
                                         <th>Faculty Website</th>
                                         <th>Gender</th>
-                                        <th>School</th>
+                                        <th>Education</th>
+                                        <th>Advisor</th>
+                                        <th>Degree</th>
+                                        <th>Publication Title</th>
+                                        <th>Publication Year</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -151,7 +157,11 @@
                 <td>'.$row->FacultyLastName.'</td>
                 <td><a href="'.$row->FacultyWebsite.'">'.$row->FacultyWebsite.'</a></td>
                 <td>'.$row->FacultyGender.'</td>
-                <td>'.$row->School.'</td>
+                <td>'.$row->Research.'</td>
+                <td>'.$row->Advisor.'</td>
+                <td>'.$row->DegreeType.'</td>
+                <td>'.$row->Title.'</td>
+                <td>'.$row->PublicationYear.'</td>
                 </tr>
          
             ';
@@ -237,7 +247,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?php echo base_url();?>dash/vendor/jquery/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="<?php echo base_url();?>dash/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -253,8 +263,8 @@
     <script src="<?php echo base_url();?>dash/js/demo/chart-area-demo.js"></script>
     <script src="<?php echo base_url();?>dash/js/demo/chart-pie-demo.js"></script>
  <!-- Page level plugins -->
-    <script src="<?php echo base_url();?>dash/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url();?>dash/jvendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>

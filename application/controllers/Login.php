@@ -33,7 +33,7 @@ class Login extends CI_Controller {
                 else{
                 $user_data = array('email'=>$email);
                 $this->session->set_userdata($user_data);
-                redirect('http://localhost:/CSC400/index.php/Home/landingTwo');
+                redirect('http://localhost:/CSC400/index.php/Home/landingtwo');
                 }
 
             }

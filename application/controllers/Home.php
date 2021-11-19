@@ -29,29 +29,30 @@ class Home extends CI_Controller {
 
 	public function landingTwo(){
 		$this->load->model('DB_Model');
-		$data['records']=$this->DB_Model->get_records();
+		//$data['joinedTables']=$this->DB_Model->get_records();
+		$data['records'] = $this->DB_Model->get_records();
 		$data['total_faculty']=$this->DB_Model->get_num_faculty();
 		$this->load->library('form_validation');
 		$this->load->helper('url');
 		$this->load->view('home_two', $data);
 	}
 
-	public function tables(){
+	/*public function tables(){
 		$this->load->model('DB_Model');
 		$data['joinedTables']=$this->DB_Model->jointables();
 		$this->load->helper('url');
-		$this->load->view('tables', $data);
-	}
+		$this->load->view('home_two', $data);
+	} */
 
 	public function table(){
 		$this->load->model('DB_Model');
 		$data['records']=$this->DB_Model->get_records();
-		$this->load->view('tables', $data);
+		$this->load->view('home_two', $data);
 	}
-	public function view_details($emailid){
+	public function faculty_details($facultyid){
 		$this->load->model('DB_Model');
 		$this->load->helper('url');
-		$data['data'] = $this->DB_Model->view_details($emailid);
+		$data['data'] = $this->DB_Model->view_details($facultyid);
 		$this->load->view('view_details', $data);
 	}
 	public function records(){

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>US STEM Scholar Demographic and Impact Information System</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url();?>dash/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,9 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url();?>dash/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <!-- <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+   <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
     <link ref="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
 </head>
 
@@ -32,9 +34,9 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">STEM<sup>Scholar</sup></div>
             </a>
@@ -44,11 +46,11 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="landingTwo">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-home fa-2x"></i>
                     <span>Home</span></a>
             </li>
-
+      
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -113,24 +115,7 @@
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Total Faculty 
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_faculty;?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
 
             
                     <!-- Content Row -->
@@ -154,8 +139,6 @@
                                         <tr>
                                         <th>First Name</th>
                                         <th>Last Name</th>
-                                        <th>Faculty Website</th>
-                                        <th>Gender</th>
                                         <th>Faculty Details</th>
                                         </tr>
                                         </thead>
@@ -166,9 +149,7 @@
                 <tr>
                 <td>'.$row->FacultyFirstName.'</td>
                 <td>'.$row->FacultyLastName.'</td>
-                <td><a href="'.$row->FacultyWebsite.'">'.$row->FacultyWebsite.'</a></td>
-                <td>'.$row->FacultyGender.'</td>
-                <td><a href="#" class="link-primary">View Details</a></td>
+                <td><a href="faculty_details/'.$row->FacultyId.'" class="link-primary">View Details <i class="fa fa-eye"></i></a></td>
                 </tr>
          
             ';
@@ -254,7 +235,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?php echo base_url();?>dash/vendor/jquery/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="<?php echo base_url();?>dash/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -272,6 +253,8 @@
  <!-- Page level plugins -->
     <script src="<?php echo base_url();?>dash/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url();?>dash/jvendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
