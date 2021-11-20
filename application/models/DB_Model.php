@@ -28,7 +28,7 @@ class DB_Model extends CI_Model {
 	  }
 
 	  public function jointables(){
-		$data = $this->db->query('SELECT * FROM faculty INNER JOIN education ON faculty.FacultyId = education.EducationID INNER JOIN degree ON faculty.FacultyId = degree.DegreeID INNER JOIN publications ON faculty.FacultyId = PublicationID INNER JOIN race ON faculty.FacultyId = RaceID  INNER JOIN grants ON faculty.FacultyId = GrantID INNER JOIN dept ON faculty.FacultyId = DeptID INNER JOIN research ON faculty.FacultyId = ReseachID');
+		$data = $this->db->query('SELECT * FROM faculty INNER JOIN education ON faculty.FacultyId = education.EducationID INNER JOIN degree ON faculty.FacultyId = degree.DegreeID INNER JOIN publications ON faculty.FacultyId = PublicationID INNER JOIN grants ON faculty.FacultyId = grants.GrantID INNER JOIN race ON faculty.FacultyId = RaceID  INNER JOIN grants ON faculty.FacultyId = GrantID INNER JOIN dept ON faculty.FacultyId = DeptID');
 		return array('count'=>$data->num_rows(), 'data'=>$data->result(),'first'=>$data->row());
 
 	  }
@@ -38,7 +38,8 @@ public function view_details($facultyid){
 	//$data=$this->db->query ("SELECT * FROM faculty WHERE FacultyId='{$facultyid}'");  
 	//INNER JOIN dept ON faculty.FacultyId=dept.DeptID INNER JOIN degree on faculty.FacultyId = 
 	//degree.DegreeID INNER JOIN research ON faculty.FacultyId = research.ResearchID
-	$data = $this->db->query("SELECT * FROM faculty INNER JOIN education ON faculty.FacultyId = education.EducationID  WHERE faculty.FacultyId='{$facultyid}' ");
+	$data = $this->db->query("SELECT * FROM faculty INNER JOIN education ON faculty.FacultyId = education.EducationID INNER JOIN degree ON faculty.FacultyId = degree.DegreeID INNER JOIN race ON faculty.FacultyId = RaceID INNER JOIN research ON faculty.FacultyId = research.ResearchID INNER JOIN publications ON faculty.FacultyId = publications.PublicationID INNER JOIN grants ON faculty.FacultyId = grants.GrantID WHERE faculty.FacultyId='{$facultyid}' ");
+	// Origninal **** $data = $this->db->query("SELECT * FROM faculty INNER JOIN education ON faculty.FacultyId = education.EducationID  WHERE faculty.FacultyId='{$facultyid}' ");
 	//$data = $this->db->query("SELECT * FROM faculty INNER JOIN education ON faculty.FacultyId = education.EducationID INNER JOIN degree ON faculty.FacultyId = degree.DegreeID INNER JOIN publications ON faculty.FacultyId = PublicationID INNER JOIN race ON faculty.FacultyId = RaceID  INNER JOIN grants ON faculty.FacultyId = GrantID INNER JOIN dept ON faculty.FacultyId = DeptID INNER JOIN research ON faculty.FacultyId = ResearchID WHERE faculty.FacultyId='{$facultyid}' ");
 
 	return array('count'=>$data->num_rows(), 'data'=>$data->result(),'first'=>$data->row());

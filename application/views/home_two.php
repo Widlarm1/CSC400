@@ -139,6 +139,7 @@
                                         <tr>
                                         <th>First Name</th>
                                         <th>Last Name</th>
+                                        <th>Faculty Gender</th>
                                         <th>Faculty Details</th>
                                         </tr>
                                         </thead>
@@ -149,6 +150,7 @@
                 <tr>
                 <td>'.$row->FacultyFirstName.'</td>
                 <td>'.$row->FacultyLastName.'</td>
+                <td>'.$row->FacultyGender.'</td>
                 <td><a href="faculty_details/'.$row->FacultyId.'" class="link-primary">View Details <i class="fa fa-eye"></i></a></td>
                 </tr>
          

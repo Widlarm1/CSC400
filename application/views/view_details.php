@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Details for <?php echo $fname. ' '.$lname.'';?></title>
+    <title>View Details</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url();?>dash/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -121,10 +121,10 @@
                             <thead>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>School</th>
-                            <th>Advisor</th>
-                            <th>Graduation Date</th>
-                            <th>Degree</th>
+                            <th>Email Address</th>
+                            <th>Gender</th>
+                            <th>Race</th>
+                            <th>Research Interests</th>
                             </tr>
                             <tbody>
         <?php
@@ -133,9 +133,10 @@
             echo '<tr>
             <td>'.$row->FacultyFirstName.'</td>
             <td>'.$row->FacultyLastName.'</td>
-            <td>'.$row->School.'</td>
-            <td>'.$row->Advisor.'</td>
-            <td>'.$row->Date.'</td>
+            <td>'.$row->FacultyEmailAddress.'</td>
+            <td>'.$row->FacultyGender.'</td>
+            <td>'.$row->Race.'</td>
+            <td>'.$row->Research.'</td>
             </tr>';
         }
     ?>
@@ -145,12 +146,10 @@
                         </table>
 
 
-                        <h3>Education</h3> 
+<h3>Education</h3> 
 
 <table class="table table-bordered border-primary">
     <thead>
-    <th>First Name</th>
-    <th>Last Name</th>
     <th>School</th>
     <th>Advisor</th>
     <th>Graduation Date</th>
@@ -161,11 +160,10 @@
 
 foreach($data['data'] as $row){
 echo '<tr>
-<td>'.$row->FacultyFirstName.'</td>
-<td>'.$row->FacultyLastName.'</td>
 <td>'.$row->School.'</td>
 <td>'.$row->Advisor.'</td>
 <td>'.$row->Date.'</td>
+<td>'.$row->DegreeType.'</td>
 </tr>';
 }
 ?>
@@ -173,6 +171,71 @@ echo '<tr>
 
 
 </table>
+
+
+</table>
+
+
+<h3>Grants</h3> 
+
+<table class="table table-bordered border-primary">
+    <thead>
+    <th>Grant Title</th>
+    <th>Grant Period Start</th>
+    <th>GrantPeriod End</th>
+    <th>Grant Amount</th>
+    <th>Grant Agency</th>
+    </tr>
+    <tbody>
+<?php
+
+foreach($data['data'] as $row){
+echo '<tr>
+<td>'.$row->GrantTitle.'</td>
+<td>'.$row->GrantPeriodStart.'</td>
+<td>'.$row->GrantPeriodEnd.'</td>
+<td>'.$row->GrantAmount.'</td>
+<td>'.$row->GrantAgency.'</td>
+</tr>';
+}
+?>
+</tbody>
+
+
+</table>
+
+
+
+<h3>Publications</h3> 
+
+<table class="table table-bordered border-primary">
+    <thead>
+    <th>Publication Type</th>
+    <th>Title</th>
+    <th>Publication Year</th>
+    <th>Publication Title</th>
+    <th>Authors</th>
+    </tr>
+    <tbody>
+<?php
+
+foreach($data['data'] as $row){
+echo '<tr>
+<td>'.$row->Type.'</td>
+<td>'.$row->Title.'</td>
+<td>'.$row->PublicationYear.'</td>
+<td>'.$row->PublicationTitle.'</td>
+<td>'.$row->Authors.'</td>
+</tr>';
+}
+?>
+</tbody>
+
+
+</table>
+
+
+
                   
 
 
