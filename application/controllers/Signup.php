@@ -37,7 +37,7 @@ class Signup extends CI_Controller {
 
                 if($insert_user){
 									$email = $this->input->post('email');
-                  	redirect('http://localhost:/CSC400/index.php/Login/signin');
+                  	redirect('http://192.168.0.200/CSC400/index.php/Login/signin');
 
 							  }
                 else{
@@ -65,7 +65,7 @@ class Signup extends CI_Controller {
 							$this->load->view('verify', $data);
 						}
 						else{
-							redirect('http://localhost:/CSC400/index.php/Login/signin');
+							redirect('http://192.168.0.200/CSC400/index.php/Login/signin');
 						}
 					}
 	}

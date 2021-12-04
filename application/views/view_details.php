@@ -47,7 +47,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="http://localhost/CSC400/index.php/Home/landingTwo">
+                <a class="nav-link" href="http://192.168.0.200/CSC400/index.php/Home/landingTwo">
                     <i class="fas fa-fw fa-home fa-2x"></i>
                     <span>Home</span></a>
             </li>
