@@ -6,7 +6,7 @@ class DB_Model extends CI_Model {
 
 	public function check_user($email){
 		$this->db->select('*');
-		$this->db->from('Staff');
+		$this->db->from('staff');
 		$this->db->where('email', $email);
 		$query = $this->db->get();
 		if($query->num_rows() > 0){
